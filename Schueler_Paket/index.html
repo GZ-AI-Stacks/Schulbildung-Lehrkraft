@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="cyber-dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<title>Meine Lernplattform — Start</title>
+<style>
+/* ══════ LICENSE SCREEN ══════ */
+._llic{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#0a0e14,#111827);display:flex;align-items:center;justify-content:center;padding:24px}
+._llic.hidden{display:none}
+._lbox{background:#161e2e;border:1px solid #2a3444;border-radius:16px;padding:40px 36px;max-width:420px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+._licon{font-size:3rem;margin-bottom:12px}
+._ltitle{font-size:1.5rem;font-weight:700;color:#f1f5f9;margin-bottom:8px}
+._lsub{font-size:.875rem;color:#8899aa;margin-bottom:28px;line-height:1.5}
+._linput{width:100%;padding:12px 16px;background:#0a0e14;border:2px solid #2a3444;border-radius:10px;color:#f1f5f9;font-size:1rem;font-family:'Courier New',monospace;letter-spacing:.1em;text-align:center;outline:none;transition:border-color .2s;margin-bottom:14px}
+._linput:focus{border-color:#3b82f6}
+._lbtn{width:100%;padding:12px;background:#3b82f6;border:none;border-radius:10px;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:opacity .2s;margin-bottom:12px;font-family:inherit}
+._lbtn:hover{opacity:.85}
+._lerr{font-size:.82rem;color:#f87171;min-height:20px}
+._lfooter{font-size:.7rem;color:#4b5563;margin-top:20px;text-transform:uppercase;letter-spacing:.08em}
+</style>
+<style>
+@font-face{font-family:'Sora';src:url('Klasse_7-10/Informatik/fonts/sora-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Sora';src:url('Klasse_7-10/Informatik/fonts/sora-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Sora';src:url('Klasse_7-10/Informatik/fonts/sora-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('Klasse_7-10/Informatik/fonts/inter-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('Klasse_7-10/Informatik/fonts/inter-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+
+:root{--neon:#3b82f6;--neon-dim:rgba(59,130,246,.15);--bg:#0a0e14;--bg2:#111827;--bg3:#1f2937;--card:#161e2e;--card-hover:#1e293b;--border:#2a3444;--text:#d4dce8;--text-dim:#8899aa;--text-bright:#f1f5f9;--heading:#fff;--link:#60a5fa;--success:#22c55e;--warning:#f59e0b;--danger:#ef4444;--radius:12px;--radius-sm:8px;--radius-lg:16px;--shadow:0 4px 24px rgba(0,0,0,.4);--font:'Sora','Inter','Segoe UI',system-ui,sans-serif}
+[data-theme="cyber-light"]{--neon:#1d4ed8;--bg:#f8f9fb;--bg2:#f0f2f5;--bg3:#e5e7eb;--card:#fff;--card-hover:#f5f7fa;--border:#d1d5db;--text:#374151;--text-dim:#4b5563;--text-bright:#111827;--heading:#111827;--link:#2563eb}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);border-bottom:2px solid var(--border);padding:2.5rem 1.5rem;text-align:center}
+.hero h1{font-size:2rem;color:var(--heading);margin-bottom:.3rem}
+.hero h1 span{color:var(--neon)}
+.hero p{font-size:1rem;color:var(--text-dim);max-width:600px;margin:.5rem auto 0}
+
+/* Info Box */
+.info-box{max-width:800px;margin:1.5rem auto;background:var(--neon-dim);border:1px solid var(--neon);border-radius:var(--radius);padding:1rem 1.5rem;font-size:.88rem;line-height:1.6}
+.info-box strong{color:var(--neon)}
+
+/* Lernplan Section */
+.lernplan-section{max-width:800px;margin:1.5rem auto;text-align:center}
+.lernplan-section h2{font-size:1.2rem;color:var(--heading);margin-bottom:.8rem}
+.lp-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--neon);color:#fff;border:none;padding:.7rem 1.5rem;border-radius:var(--radius);font-family:var(--font);font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+.lp-btn:hover{opacity:.85;transform:translateY(-1px)}
+.lp-hint{font-size:.78rem;color:var(--text-dim);margin-top:.5rem}
+
+/* Footer */
+.footer{text-align:center;padding:2.5rem 1rem;font-size:.75rem;color:var(--text-dim);border-top:1px solid var(--border);margin-top:2rem}
+
+/* Theme + Zoom Controls */
+.theme-toggle{position:fixed;bottom:1rem;right:1rem;display:flex;gap:.3rem;z-index:999}
+.tt-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;color:var(--text)}
+.tt-btn:hover{border-color:var(--neon);transform:scale(1.1)}
+.zoom-controls{position:fixed;bottom:1rem;left:1rem;display:flex;gap:4px;z-index:999}
+.zoom-btn{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:inherit;line-height:1}
+.zoom-btn:hover{border-color:var(--neon);color:var(--neon);transform:scale(1.1)}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.4rem}
+}
+@media print{
+  .theme-toggle,.zoom-controls{display:none!important}
+  body{background:#fff;color:#000}
+  .hero{background:#f5f5f5;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<div class="_llic" id="_lScreen">
+  <div class="_lbox">
+    <div class="_licon">🏫</div>
+    <div class="_ltitle">Schulbildung — Schullizenz</div>
+    <div class="_lsub">Bitte gib deinen Lizenzschlüssel ein,<br>um die Lernplattform zu aktivieren.</div>
+    <input class="_linput" id="_lInput" type="text" placeholder="SCL-XXXX-XXXX-XXXX" maxlength="19" autocomplete="off" spellcheck="false">
+    <button class="_lbtn" onclick="_lActivate()">Aktivieren</button>
+    <div class="_lerr" id="_lErr"></div>
+    <div class="_lfooter">GZ-AI.-Stacks &middot; Schulbildung Schullizenz</div>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>&#127891; Meine <span>Lernplattform</span></h1>
+  <p>Willkommen! &#214;ffne deinen Lernplan, um mit dem Lernen zu starten.</p>
+</div>
+
+<div class="info-box">
+  <strong>&#128161; So funktioniert&#8217;s:</strong><br>
+  1. Klicke auf <strong>&#128194; Lernplan &#246;ffnen</strong> und w&#228;hle die HTML-Datei von deinem Lehrer<br>
+  2. Klicke auf <strong>&#9654; Starten</strong> bei einem Modul, um die Lern-App zu &#246;ffnen<br>
+  3. Dein Fortschritt wird automatisch im Browser gespeichert
+</div>
+
+<div class="lernplan-section">
+  <h2>&#128203; Mein Lernplan</h2>
+  <label class="lp-btn" id="lpOpen">
+    &#128194; Lernplan &#246;ffnen
+    <input type="file" accept=".html" id="lpFile" style="display:none">
+  </label>
+  <p class="lp-hint">W&#228;hle die HTML-Datei, die du von deinem Lehrer erhalten hast</p>
+</div>
+
+<div class="footer">
+  &#169; 2026 GZ AI Stacks &#8212; Gerd Zimmermann<br>
+  Offline verf&#252;gbar &#183; Daten bleiben lokal auf deinem Computer
+</div>
+
+<div class="theme-toggle">
+  <button class="tt-btn" onclick="toggleMode()" title="Dark/Light umschalten" id="modeToggle">&#127769;</button>
+</div>
+<div class="zoom-controls">
+  <button class="zoom-btn" onclick="zoomOut()" title="Verkleinern">&#8722;</button>
+  <button class="zoom-btn" onclick="zoomReset()" title="Zur&#252;cksetzen" style="font-size:10px"><span id="zoomLvl">100%</span></button>
+  <button class="zoom-btn" onclick="zoomIn()" title="Vergr&#246;&#223;ern">+</button>
+</div>
+
+<script>
+/* Theme */
+var mode='dark';
+function toggleMode(){
+  mode=mode==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme','cyber-'+mode);
+  document.getElementById('modeToggle').textContent=mode==='dark'?'\u{1F319}':'\u2600\uFE0F';
+  try{localStorage.setItem('sp_mode',mode)}catch(e){}
+}
+try{var sm=localStorage.getItem('sp_mode');if(sm==='light')toggleMode();}catch(e){}
+
+/* Zoom */
+var zl=100;
+function zoomIn(){if(zl<200){zl+=10;applyZoom()}}
+function zoomOut(){if(zl>50){zl-=10;applyZoom()}}
+function zoomReset(){zl=100;applyZoom()}
+function applyZoom(){document.documentElement.style.fontSize=zl+'%';document.getElementById('zoomLvl').textContent=zl+'%'}
+
+/* Lernplan file opener */
+document.getElementById('lpFile').addEventListener('change',function(e){
+  var f=e.target.files[0];
+  if(!f)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    document.open();
+    document.write(ev.target.result);
+    document.close();
+  };
+  reader.readAsText(f);
+});
+
+/* Keyboard */
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='+'&&!e.ctrlKey){e.preventDefault();zoomIn()}
+  else if(e.key==='-'&&!e.ctrlKey){e.preventDefault();zoomOut()}
+  else if(e.key==='0'&&!e.ctrlKey){e.preventDefault();zoomReset()}
+  else if(e.key==='d'||e.key==='D'){toggleMode()}
+});
+
+/* ══════ LICENSE GATE ══════ */
+var _lSTORE='schulbildung_schullizenz_lic_v1';
+function _lHash(s){var h=0x7A39E1B;for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;h=(h^(h>>>16))|0;h=(h*0x45d9f3b)|0;}return Math.abs(h);}
+function _lGenCheck(parts){var seed=0x53434C;var p1=_lHash(parts[0]+'gz');var p2=_lHash(parts[1]+'ai');var combined=(p1^p2^seed)>>>0;var check=(combined%89990)+10000;return check.toString().substring(0,4);}
+function _lValidate(key){if(!key)return false;var k=key.toUpperCase().trim();var regex=/^SCL-([A-Z0-9]{4})-([A-Z0-9]{4})-([A-Z0-9]{4})$/;var m=k.match(regex);if(!m)return false;var expected=_lGenCheck([m[1],m[2]]);return m[3]===expected;}
+function _lActivate(){var input=document.getElementById('_lInput');var error=document.getElementById('_lErr');var key=input.value.trim().toUpperCase();if(!key){error.textContent='Bitte Lizenzschlüssel eingeben';return;}if(_lValidate(key)){try{localStorage.setItem(_lSTORE,key)}catch(e){}document.getElementById('_lScreen').classList.add('hidden');error.textContent='';}else{error.textContent='Ungültiger Lizenzschlüssel';input.style.borderColor='#f87171';setTimeout(function(){input.style.borderColor=''},2000);}}
+(function(){var stored=null;try{stored=localStorage.getItem(_lSTORE)}catch(e){}if(stored&&_lValidate(stored)){document.getElementById('_lScreen').classList.add('hidden');}})();
+document.getElementById('_lInput').addEventListener('input',function(){var v=this.value.replace(/[^A-Za-z0-9]/g,'').toUpperCase();if(v.length>0&&!v.startsWith('SCL'))v='SCL'+v.substring(3);var f='';if(v.length>0)f=v.substring(0,3);if(v.length>3)f+='-'+v.substring(3,7);if(v.length>7)f+='-'+v.substring(7,11);if(v.length>11)f+='-'+v.substring(11,15);this.value=f;});
+document.getElementById('_lInput').addEventListener('keydown',function(e){if(e.key==='Enter')_lActivate();});
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}</script>
+</body>
+</html>
